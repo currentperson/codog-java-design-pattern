@@ -12,6 +12,8 @@
 
 女朋友有很多属性, 年龄, ~~性别~~, \(还要有性别, 心疼自己, 带不带物种呀, 删删删\), 姓名等, 不同阶段我们可能知道不同的属性, 所以我们将女朋友类设计如下:
 
+### 初始实现
+
 ```java
 @Getter
 @Setter
@@ -116,6 +118,46 @@ public class GirlFriend {
     }
 }
 ```
+
+### 问题分析
+
+我们觉得有二个问题
+
+一. 构造函数数量太多啦
+
+如果我们是个老司机, 我们久经沙场, 一眼就能看出女朋友的 cup, 我们就可能再增加一个构造函数如下:
+
+```java
+    /**
+     * 老司机构造函数
+     * @param name
+     * @param cup
+     */
+    @BadSmell
+    public GirlFriend(String name, CupEnum cup) {
+        this.name = name;
+        this.cup = cup;
+    }
+```
+
+如果我们是朋友介绍的, 说是个年轻小姑娘, 才18 岁\(洗洗睡吧, 18 岁的小姑娘看不上你的\), 我们就知道她的年龄, 甚至不知道姓名, 我们就得再增加一个构造函数
+
+```java
+    /**
+     * 朋友介绍, 只说了是个 18 岁的姑娘
+     * @param birthDay
+     */
+    @BadSmell
+    public GirlFriend(LocalDateTime birthDay) {
+        this.birthDay = birthDay;
+    }
+```
+
+
+
+二. 第三个的入参太多啦, 身高体重还都是 Integer 类型, 一个填错就把 168 cm, 50 kg 的女票变成了 50 cm, 168 kg 的女朋友
+
+
 
 ## 生产实践
 
