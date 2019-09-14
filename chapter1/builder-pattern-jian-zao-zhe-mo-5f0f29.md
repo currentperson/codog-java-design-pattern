@@ -12,7 +12,7 @@
 
 女朋友有很多属性, 年龄, ~~性别~~, \(还要有性别, 心疼自己, 带不带物种呀, 删删删\), 姓名等, 不同阶段我们可能知道不同的属性, 所以我们将女朋友类设计如下:
 
-```
+```java
 @Getter
 @Setter
 public class GirlFriend {
@@ -114,7 +114,7 @@ public class GirlFriend {
         this.weight = weight;
         this.cup = cup;
     }
-} 
+}
 ```
 
 ## 生产实践
