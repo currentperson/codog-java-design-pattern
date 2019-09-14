@@ -121,7 +121,7 @@ public class GirlFriend {
 
 ### 问题分析
 
-我们觉得有二个问题
+我们觉得有三个问题
 
 一. 构造函数数量太多啦
 
@@ -153,11 +153,36 @@ public class GirlFriend {
     }
 ```
 
+二. 第三个的入参太多啦, 身高体重还都是 Integer 类型, 一个填错就把 168 cm, 50 kg 的女票变成了 50 cm, 168 kg 的女朋友\(再次心疼自己, 168 kg 的都没找到\)![](/assets/2019091403.png)
 
+三. 对新属性的扩展性极差
 
-二. 第三个的入参太多啦, 身高体重还都是 Integer 类型, 一个填错就把 168 cm, 50 kg 的女票变成了 50 cm, 168 kg 的女朋友
+如果我们今天新想到了一个属性需要记录下来, 比如女朋友职业\(学生, 白领, 文员, 程序媛, 教师\), 比如血型等等, 我们每次增加第 n 个属性属性, 如果想要全部构造出来, 可能需要添加 2^\(n - 1\) 构造函数, 这个是很绝望的
 
+### 初步尝试解决
 
+~~看了上面的分析, 我们灵光乍现, 既然想使用构造函数构造个女朋友这么复杂, 那我们就不构造了在生活中找一个不就好啦~~
+
+我们既然是个优秀的程序员, 解决这个问题比在生活中找一个女朋友容易多啦\(至少构造函数不嫌我们脱发呀\)
+
+好, 那应该怎么解决呢, 既然构造函数数量以指数级别膨胀, 那我们不用构造函数了行不行, 使用无参构造函数和 Set 方法写下怎么样呢
+
+```java
+    /**
+     * 使用无参构造函数和 Setter 完成对象拼装
+     */
+    public static void buildGirlFriendWithSetter() {
+        GirlFriend girlFriend = new GirlFriend();
+        girlFriend.setBirthDay(LocalDateTime.now());
+        girlFriend.setName("");
+        girlFriend.setConstellation(null);
+        girlFriend.setHometown("");
+        girlFriend.setHeight(0);
+        girlFriend.setWeight(0);
+        girlFriend.setCup(null);
+        ...
+    }
+```
 
 ## 生产实践
 
