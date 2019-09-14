@@ -8,7 +8,7 @@
 
 ## 例子代码
 
-假如我们要建造个女朋友\(心疼自己, 别人的女朋友不都是同学, 相亲找的么, 我的怎么还需要自己 new\)
+假如我们要建造个女朋友\(心疼自己, 别人的女朋友不都是国家给发么, 我的怎么还需要自己 new, 国家啥时候给我发到底\)
 
 女朋友有很多属性, 年龄, ~~性别~~, \(还要有性别, 心疼自己, 带不带物种呀, 删删删\), 姓名等, 不同阶段我们可能知道不同的属性, 所以我们将女朋友类设计如下:
 
@@ -188,7 +188,79 @@ public class GirlFriend {
 
 ### 使用 Builder 模式
 
+```
+public final class GirlFriendBuilder {
+    private LocalDateTime birthDay;
+    private String name;
+    private ConstellationEnum constellation;
+    private String hometown;
+    private Integer height;
+    private Integer weight;
+    private CupEnum cup;
 
+    private GirlFriendBuilder() {
+    }
+
+    public static GirlFriendBuilder aGirlFriend() {
+        return new GirlFriendBuilder();
+    }
+
+    public GirlFriendBuilder withBirthDay(LocalDateTime birthDay) {
+        this.birthDay = birthDay;
+        return this;
+    }
+
+    public GirlFriendBuilder withName(String name) {
+        this.name = name;
+        return this;
+    }
+
+    public GirlFriendBuilder withConstellation(ConstellationEnum constellation) {
+        this.constellation = constellation;
+        return this;
+    }
+
+    public GirlFriendBuilder withHometown(String hometown) {
+        this.hometown = hometown;
+        return this;
+    }
+
+    public GirlFriendBuilder withHeight(Integer height) {
+        this.height = height;
+        return this;
+    }
+
+    public GirlFriendBuilder withWeight(Integer weight) {
+        this.weight = weight;
+        return this;
+    }
+
+    public GirlFriendBuilder withCup(CupEnum cup) {
+        this.cup = cup;
+        return this;
+    }
+
+    public GirlFriend build() {
+        GirlFriend girlFriend = new GirlFriend();
+        girlFriend.setBirthDay(birthDay);
+        girlFriend.setName(name);
+        girlFriend.setConstellation(constellation);
+        girlFriend.setHometown(hometown);
+        girlFriend.setHeight(height);
+        girlFriend.setWeight(weight);
+        girlFriend.setCup(cup);
+        return girlFriend;
+    }
+}
+```
+
+使用上面的代码就可以构建一个自定义的女朋友啦
+
+```java
+GirlFriend cuiHuaGirlFriend = GirlFriendBuilder.aGirlFriend().withName("翠花").withHeight(168).withWeight(50).build();
+```
+
+之前所说的一些问题都解决啦
 
 ## 生产实践
 
@@ -197,6 +269,12 @@ public class GirlFriend {
 ### 使用 Builder 插件
 
 插件地址: [https://plugins.jetbrains.com/plugin/6585-builder-generator/](https://plugins.jetbrains.com/plugin/6585-builder-generator/)
+
+code -&gt; generate![](/assets/2019091404.png)
+
+选择 builder 就可以啦
+
+![](/assets/2019091405.png)
 
 ### 使用 Lombok 插件
 
