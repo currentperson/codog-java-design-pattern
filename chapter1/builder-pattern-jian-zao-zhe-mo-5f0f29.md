@@ -198,3 +198,11 @@ public class GirlFriend {
 
 插件地址: [https://plugins.jetbrains.com/plugin/6317-lombok/](https://plugins.jetbrains.com/plugin/6317-lombok/)
 
+
+
+### 使用 Setter 插件
+
+插件地址: [https://plugins.jetbrains.com/plugin/9360-generateallsetter/](https://plugins.jetbrains.com/plugin/9360-generateallsetter/)
+
+
+
