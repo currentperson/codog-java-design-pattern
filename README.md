@@ -10,3 +10,9 @@ JDK Version: 1.8
 
 Github: [https://github.com/currentperson/CodogDesignPattern](https://github.com/currentperson/CodogDesignPattern)
 
+
+
+需要内推蚂蚁金服等阿里系, 抖音等头条系请加微信详聊:
+
+WX: 13820802870
+

@@ -184,6 +184,8 @@ public class GirlFriend {
     }
 ```
 
+这个缺点很明显啦, 代码太长, set 一行又一行
+
 ## 生产实践
 
 可以使用一些插件来帮助我们完成重复开发的工作, IDEA 插件的安装请参考 [IDEA 安装插件的方法](/idea-an-zhuang-cha-jian-de-fang-fa.md)
