@@ -14,7 +14,7 @@
 
 插件地址: [https://plugins.jetbrains.com/plugin/6585-builder-generator/](https://plugins.jetbrains.com/plugin/6585-builder-generator/)
 
-### 
+
 
 ### 使用 Lombok 插件
 
