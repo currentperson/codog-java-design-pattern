@@ -280,6 +280,36 @@ code -&gt; generate![](/assets/2019091404.png)
 
 插件地址: [https://plugins.jetbrains.com/plugin/6317-lombok/](https://plugins.jetbrains.com/plugin/6317-lombok/)
 
+mavn 引入 lombok 依赖
+
+```xml
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.8</version>
+        </dependency>
+```
+
+在需要使用的类上面打上标签
+
+```java
+@Builder
+public class GirlFriend {
+
+    /**
+     * 出生日期
+     */
+    private LocalDateTime birthDay;
+    ...
+}
+```
+
+使用方式:
+
+```java
+GirlFriend girlFriend = GirlFriend.builder().birthDay(LocalDateTime.now()).build();
+```
+
 ### 使用 Setter 插件
 
 插件地址: [https://plugins.jetbrains.com/plugin/9360-generateallsetter/](https://plugins.jetbrains.com/plugin/9360-generateallsetter/)
