@@ -1,3 +1,6 @@
-# First Chapter
+# 创建型设计模式
 
-GitBook allows you to organize your book into chapters, each chapter is stored in a separate file like this one.
+主要是一些创建类来实现代码的扩展性
+
+
+
