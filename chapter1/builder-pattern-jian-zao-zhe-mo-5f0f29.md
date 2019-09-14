@@ -6,6 +6,14 @@
 2. 将某个构造耗时的部分异步构造, 等到真正用到的时候再完全构造出来
 3. 某个复杂类的某个部分的构造实现和各个部分的构造顺序分离开, 使得各个部分的既能按照一定的顺序构建, 又能对调用方屏蔽顺序细节
 
+## 例子代码
+
+假如我们要建造个女朋友\(心疼自己, 别人的女朋友不都是同学, 相亲找的么, 我的怎么还需要自己 new\)
+
+
+
+
+
 ## 生产实践
 
 可以使用一些插件来帮助我们完成重复开发的工作, IDEA 插件的安装请参考 [IDEA 安装插件的方法](/idea-an-zhuang-cha-jian-de-fang-fa.md)
@@ -13,8 +21,6 @@
 ### 使用 Builder 插件
 
 插件地址: [https://plugins.jetbrains.com/plugin/6585-builder-generator/](https://plugins.jetbrains.com/plugin/6585-builder-generator/)
-
-
 
 ### 使用 Lombok 插件
 
