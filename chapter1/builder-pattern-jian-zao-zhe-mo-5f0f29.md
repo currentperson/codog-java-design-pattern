@@ -8,11 +8,13 @@
 
 ## 生产实践
 
+可以使用一些插件来帮助我们完成重复开发的工作, IDEA 插件的安装请参考 [IDEA 安装插件的方法](/idea-an-zhuang-cha-jian-de-fang-fa.md)
+
 ### 使用 Builder 插件
 
 插件地址: [https://plugins.jetbrains.com/plugin/6585-builder-generator/](https://plugins.jetbrains.com/plugin/6585-builder-generator/)
 
-
+### 
 
 ### 使用 Lombok 插件
 
