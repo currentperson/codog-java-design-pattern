@@ -8,11 +8,15 @@
 
 ## 生产实践
 
-### IDEA 安装 Builder 插件
+### 使用 Builder 插件
 
+### 
 
+### 
 
 ### 使用 Lombok 插件
+
+插件地址: [https://plugins.jetbrains.com/plugin/6317-lombok/](https://plugins.jetbrains.com/plugin/6317-lombok/)
 
 
 
