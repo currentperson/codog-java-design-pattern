@@ -188,7 +188,7 @@ public class GirlFriend {
 
 ### 使用 Builder 模式
 
-```
+```java
 public final class GirlFriendBuilder {
     private LocalDateTime birthDay;
     private String name;
