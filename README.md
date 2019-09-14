@@ -4,7 +4,7 @@
 
 操作系统: Mac OS
 
-IDE: idea
+IDE: IDEA
 
 JDK Version: 1.8
 
