@@ -260,6 +260,10 @@ GirlFriend cuiHuaGirlFriend = GirlFriendBuilder.aGirlFriend().withName("翠花")
 
 之前所说的一些问题都解决啦
 
+最终的类图如下:
+
+![](/assets/2019091501.png)
+
 ## 生产实践
 
 可以使用一些插件来帮助我们完成重复开发的工作, IDEA 插件的安装请参考 [IDEA 安装插件的方法](/idea-an-zhuang-cha-jian-de-fang-fa.md)
