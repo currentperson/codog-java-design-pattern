@@ -260,8 +260,6 @@ GirlFriend cuiHuaGirlFriend = GirlFriendBuilder.aGirlFriend().withName("翠花")
 
 之前所说的一些问题都解决啦
 
-如果我们的属性是有赋值的先后顺序的, 比如先有脸后有是否有酒窝, 这就需要一个建造者模式中增加一个导演类.
-
 ## 生产实践
 
 可以使用一些插件来帮助我们完成重复开发的工作, IDEA 插件的安装请参考 [IDEA 安装插件的方法](/idea-an-zhuang-cha-jian-de-fang-fa.md)
