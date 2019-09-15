@@ -183,7 +183,7 @@ public class GirlFriend {
     }
 ```
 
-这个缺点很明显啦, 代码太长, set 一行又一行, 使用 set 模式还有一个缺点就是不是很好控制设置属性的顺序
+这个缺点很明显啦, 代码太长, set 一行又一行
 
 ### 使用 Builder 模式
 
@@ -261,11 +261,7 @@ GirlFriend cuiHuaGirlFriend = GirlFriendBuilder.aGirlFriend().withName("翠花")
 
 之前所说的一些问题都解决啦
 
-
-
 如果我们的属性是有赋值的先后顺序的, 比如先有脸后有是否有酒窝, 这就需要一个建造者模式中增加一个导演类.
-
-
 
 ## 生产实践
 
