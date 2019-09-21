@@ -309,7 +309,282 @@ public class WeaponKillProcessor {
 }
 ```
 
+## 使用策略模式
 
+上面的代码没有解决最根本的问题, 也就是去除 if/else, 所用的方法其实就是将 if else 转换为 for, 这样的代码后续添加枪就不需要再增加新的类型啦.
+
+我们先定义一个通用的策略模式接口如下:
+
+```java
+/**
+ * 策略模式
+ */
+public interface Strategy<T extends AbstractStrategyRequest, R extends AbstractStrategyResponse> {
+    /**
+     * 执行策略
+     * @param request
+     * @return
+     */
+    R executeStrategy(T request);
+}
+```
+
+入参和出参都是基本的抽象类
+
+```java
+/**
+ * 策略模式抽象入参
+ */
+public abstract class AbstractStrategyRequest {
+}
+```
+
+```java
+/**
+ * 策略模式抽象出参
+ */
+public abstract class AbstractStrategyResponse {
+}
+```
+
+实现一个武器抽象类实现接口
+
+```java
+public abstract class WeaponStrategy implements Strategy<WeaponStrategyRequest, AbstractStrategyResponse> {
+
+    /**
+     * 发现敌人
+     */
+    protected void findEnemy() {
+        System.out.println("发现敌人");
+    }
+
+    /**
+     * 开枪前的动作
+     */
+    protected abstract void preAction();
+
+    /**
+     * 开枪
+     */
+    protected abstract void shoot();
+
+    /**
+     * 获取距离范围
+     * @return
+     */
+    protected abstract Range<Integer> queryDistanceRange();
+
+    /**
+     * 杀人的动作
+     */
+    public void kill() {
+        findEnemy();
+        preAction();
+        shoot();
+    }
+
+    @Override
+    public AbstractStrategyResponse executeStrategy(WeaponStrategyRequest request) {
+        System.out.println("距离敌人 " + request.getDistance());
+        kill();
+        return null;
+    }
+}
+```
+
+其中的 Range 类实现如下:
+
+```java
+/**
+ * 范围类
+ * @param <T>
+ */
+@Data
+@AllArgsConstructor
+public class Range<T extends Comparable<T>> {
+
+    private T start;
+
+    private T end;
+
+    public Range(T start, T end) {
+        this.start = start;
+        this.end = end;
+    }
+
+    private boolean isIncludeStart = true;
+
+    private boolean isIncludeEnd = false;
+
+    /**
+     * 判断是否在范围内
+     * @param target
+     * @return
+     */
+    public boolean inRange(T target) {
+        if(isIncludeStart) {
+            if(start.compareTo(target) > 0) {
+                return false;
+            }
+        } else {
+            if(start.compareTo(target) >= 0) {
+                return false;
+            }
+        }
+        if(isIncludeEnd) {
+            if(end.compareTo(target) < 0) {
+                return false;
+            }
+        } else {
+            if(end.compareTo(target) <= 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+```
+
+依次实现这个抽象武器策略类
+
+```java
+/**
+ * 平底锅
+ */
+public class PanStrategy extends WeaponStrategy {
+
+    @Override
+    protected void preAction() {
+        System.out.println("二步快速走过去");
+    }
+
+    @Override
+    protected void shoot() {
+        System.out.println("掏出平底锅呼死他");
+    }
+
+    @Override
+    protected Range<Integer> queryDistanceRange() {
+        return new Range<>(0, 1);
+    }
+}
+```
+
+```java
+/**
+ * 手枪类
+ */
+public class PistolStrategy extends WeaponStrategy {
+    @Override
+    protected void preAction() {
+        System.out.println("快速走过去");
+    }
+
+    @Override
+    protected void shoot() {
+        System.out.println("掏出手枪打死他");
+    }
+
+    @Override
+    protected Range<Integer> queryDistanceRange() {
+        return new Range<>(1, 10);
+    }
+}
+```
+
+```java
+/**
+ * 步枪
+ */
+public class RifleStrategy extends WeaponStrategy {
+
+    @Override
+    protected void preAction() {
+        System.out.println("身体蹲下降低后坐力");
+        System.out.println("掏出步枪");
+        System.out.println("打开 3 倍镜");
+    }
+
+    @Override
+    protected void shoot() {
+        System.out.println("开枪射击");
+    }
+
+    @Override
+    protected Range<Integer> queryDistanceRange() {
+        return new Range<>(100, 1000);
+    }
+}
+```
+
+```java
+/**
+ * 散弹枪
+ */
+public class ShotgunStrategy extends WeaponStrategy {
+
+    @Override
+    protected void preAction() {
+        System.out.println("身体站直, 瞄准");
+    }
+
+    @Override
+    protected void shoot() {
+        System.out.println("打一枪算一枪");
+    }
+
+    @Override
+    protected Range<Integer> queryDistanceRange() {
+        return new Range<>(10, 20);
+    }
+}
+```
+
+```java
+public class SniperRifleStrategy extends WeaponStrategy {
+
+    @Override
+    protected void preAction() {
+        System.out.println("趴在草丛里苟着");
+        System.out.println("掏出狙击枪");
+        System.out.println("打开 8 倍镜");
+    }
+
+    @Override
+    protected void shoot() {
+        System.out.println("开枪射击");
+    }
+
+    @Override
+    protected Range<Integer> queryDistanceRange() {
+        return new Range<>(1000, Integer.MAX_VALUE);
+    }
+}
+```
+
+```java
+/**
+ * 冲锋枪
+ */
+public class SubmachineGunStrategy extends WeaponStrategy {
+
+    @Override
+    protected void preAction() {
+        System.out.println("身体站直, 心态稳住");
+    }
+
+    @Override
+    protected void shoot() {
+        System.out.println("掏出冲锋枪打死他");
+    }
+
+    @Override
+    protected Range<Integer> queryDistanceRange() {
+        return new Range<>(20, 100);
+    }
+}
+```
 
 
 
