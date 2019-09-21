@@ -586,5 +586,59 @@ public class SubmachineGunStrategy extends WeaponStrategy {
 }
 ```
 
+定义一个上下文类来对入参进行路由
+
+```
+/**
+ * 策略上下文, 用来路由策略
+ */
+public class StrategyContext {
+
+    public static final List<WeaponStrategy> WEAPON_STRATEGYS = new ArrayList<>();
+
+    static {
+        WEAPON_STRATEGYS.add(new PanStrategy());
+        WEAPON_STRATEGYS.add(new PistolStrategy());
+        WEAPON_STRATEGYS.add(new RifleStrategy());
+        WEAPON_STRATEGYS.add(new ShotgunStrategy());
+        WEAPON_STRATEGYS.add(new SniperRifleStrategy());
+        WEAPON_STRATEGYS.add(new SubmachineGunStrategy());
+    }
+
+    public static void execute(Integer distance) {
+        WEAPON_STRATEGYS.stream().filter((weaponStrategy -> {
+            Range<Integer> integerRange = weaponStrategy.queryDistanceRange();
+            return integerRange.inRange(distance);
+        })).findAny().get().executeStrategy(new WeaponStrategyRequest(distance));
+    }
+}
+```
+
+最后在主方法里面调用就好啦
+
+```java
+public class App {
+
+    public static void main(String[] args) {
+        int distance = 89;
+        //NoodlesKillProcessor.killByDistance(distance);
+        StrategyContext.execute(89);
+    }
+}
+```
+
+结果如下:
+
+```
+距离敌人 89
+发现敌人
+身体站直, 心态稳住
+掏出冲锋枪打死他
+```
+
+## 其他
+
+这个是比较常见的方法, 基于Spring 的实现和基于反射的实现, 还有生产上的例子会在习题中给出
+
 
 
