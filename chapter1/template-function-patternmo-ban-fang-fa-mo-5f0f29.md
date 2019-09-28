@@ -125,11 +125,281 @@ public class SeeOrthopedicSurgeonStrategy implements
 
 第三个问题是这个类的职责不是很单一, 既负责了不同的看病细节的实现, 比如买什么药, 又负责了组织整个看病流程, 如果这二个维度有一个维度需要修改了, 那么就得修改这个类
 
+## 模板方法模式
 
+我们定义了一个模板方法, 负责抽象看病过程中的各个细节
 
-## 初步尝试解决
+```java
+/**
+ * 定义模板方法
+ */
+public abstract class AbstractSeeDoctorTemplateStrategy 
+                          implements TemplateStrategy {
 
+    /**
+     * 获取疾病类型
+     * @return
+     */
+    protected abstract DiseaseTypeEnum getDiseaseType();
 
+    /**
+     * 挂号
+     */
+    protected abstract void register();
+
+    /**
+     * 等待叫号
+     */
+    protected void waitDoctor() {
+        System.out.println("拿了号在叫号大厅等待");
+    }
+
+    /**
+     * 诊断
+     */
+    protected abstract void diagnosis();
+
+    /**
+     * 关于年龄的判断
+     */
+    protected void evaluateAge(Integer age) {
+        if(age < Constant.BEST_AGE) {
+            System.out.println("还年轻, 不用来复查了");
+        } else {
+            System.out.println("吃完药还得来复查");
+        }
+    }
+
+    /**
+     * 买药
+     * @return
+     */
+    protected abstract MedicineType buyMedicine();
+}
+```
+
+这个类有三种实现方式:
+
+```java
+/**
+ * 去皮肤科看脱发
+ */
+public class SeeDermatologistTemplateStrategy 
+        extends AbstractSeeDoctorTemplateStrategy {
+    @Override
+    protected DiseaseTypeEnum getDiseaseType() {
+        return DiseaseTypeEnum.HAIR_LOSS;
+    }
+
+    @Override
+    protected void register() {
+        System.out.println("挂皮肤科的号");
+    }
+
+    @Override
+    protected void diagnosis() {
+        System.out.println("皮肤科医生门诊");
+    }
+
+    @Override
+    protected MedicineType buyMedicine() {
+        System.out.println("初步诊断是肾虚, 买一些蚂蚁大力丸");
+        return MedicineType.ANT_POWERFUL_PILL;
+    }
+}
+```
+
+```java
+/**
+ * 看眼科医生策略
+ */
+public class SeeOphthalmologistTemplateStrategy 
+                extends AbstractSeeDoctorTemplateStrategy {
+    @Override
+    protected DiseaseTypeEnum getDiseaseType() {
+        return DiseaseTypeEnum.GLAUCOMA;
+    }
+
+    @Override
+    protected void register() {
+        System.out.println("挂眼科的号");
+    }
+
+    @Override
+    protected void diagnosis() {
+        System.out.println("去眼科医生门诊");
+    }
+
+    @Override
+    protected MedicineType buyMedicine() {
+        return MedicineType.ANTICATARRHALS;
+    }
+}
+```
+
+```java
+/**
+ * 颈椎病看骨科医生
+ */
+public class SeeOrthopedicSurgeonTemplateStrategy 
+            extends AbstractSeeDoctorTemplateStrategy {
+    @Override
+    protected DiseaseTypeEnum getDiseaseType() {
+        return DiseaseTypeEnum.CERVICAL_PONDYLOPATHY;
+    }
+
+    @Override
+    protected void register() {
+        System.out.println("挂骨科的号");
+    }
+
+    @Override
+    protected void diagnosis() {
+        System.out.println("去骨科医生门诊");
+    }
+
+    @Override
+    protected MedicineType buyMedicine() {
+        return MedicineType.BLOOD_CIRCULATION_DRUGS;
+    }
+}
+```
+
+我们还需要定义一个不需要关系细节只管整个看病流程的模板类:
+
+```java
+/**
+ * 看医生的模板
+ */
+public class SeeDoctorTemplate {
+
+    private SeeDoctorTemplate() {
+    }
+
+    public static MedicineType seeDoctor(AbstractSeeDoctorTemplateStrategy seeDoctorTemplateStrategy, Integer age) {
+        seeDoctorTemplateStrategy.register();
+        seeDoctorTemplateStrategy.waitDoctor();
+        seeDoctorTemplateStrategy.diagnosis();
+        seeDoctorTemplateStrategy.evaluateAge(age);
+        return seeDoctorTemplateStrategy.buyMedicine();
+    }
+}
+```
+
+最后当想去看骨科的时候:
+
+```java
+public static void main(String[] args) {
+        SeeDoctorTemplate.seeDoctor(
+        new SeeOrthopedicSurgeonTemplateStrategy(),
+        24);
+}
+```
+
+运行结果如下:
+
+```
+挂骨科的号
+拿了号在叫号大厅等待
+去骨科医生门诊
+吃完药还得来复查
+```
+
+## 生产的例子
+
+如果我们加入了福报厂, 每逢双十一等大促需要保证体统的主要功能正常运行, 一些平时用来优化用户体验的功能可能在流量过大的时候被人降级掉, 或者不重要的这部分代码报错的时候不影响主要流程, 只要输出日志来提供报警和监控就可以. 所以会产生大量类似这样的代码.
+
+```java
+
+if (AI 开关没打开) {
+    返回用户评分是 0 
+}
+try {
+    执行真正的业务逻辑给用户打分并返回
+} catch (Exception e) {
+    打印 AI 错误日志
+    返回用户评分是 0 
+}
+```
+
+或者这样的业务:
+
+```java
+if (营销开关没打开) {
+    返回用户优惠卷列表是空
+}
+try {
+    执行真正的业务逻辑查询用户优惠卷并返回
+} catch (Exception e) {
+    打印查询优惠卷日志
+    返回用户优惠卷列表为空
+}
+```
+
+上面的代码大量重复, 并且对于阅读者来说看了半天异常处理逻辑, 不知道真正的业务逻辑, 这时候我们就可以定义一个模板方法:
+
+```java
+/**
+ * 弱依赖方法
+ *
+ * @param <T>
+ * @param <R>
+ */
+public interface WeakFunction<T, R> {
+
+    /**
+     * 是否是业务开关打开
+     * @return
+     */
+    default boolean isBusinessOpen() {
+        return false;
+    }
+
+    /**
+     * 执行弱依赖方法, 真正的业务逻辑
+     *
+     * @param request
+     * @return
+     */
+    R execute(T request);
+}
+```
+
+然后使用模板去处理:
+
+```java
+public class WeakTemplate {
+
+    private WeakTemplate() {
+    }
+
+    /**
+     * 执行弱依赖模板
+     *
+     * @param weakFunction 真正的业务逻辑
+     * @param request      请求入参
+     * @param defaultValue 开关关了或者执行失败时候的值
+     * @param tip          //报错的提示信息
+     * @param <T>
+     * @param <R>
+     * @return
+     */
+    public static <T, R> R doWeakFunction(
+                WeakFunction<T, R> weakFunction, 
+                T request, R defaultValue, String tip) {
+        //使用卫语句
+        if (!weakFunction.isBusinessOpen()) {
+            return defaultValue;
+        }
+        try {
+            return weakFunction.execute(request);
+        } catch (Exception e) {
+            System.out.println(tip + e.getMessage());
+            return defaultValue;
+        }
+    }
+}
+```
 
 
 
