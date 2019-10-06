@@ -23,15 +23,15 @@ public class TotalRepayPlan {
     public TotalRepayPlan(List<RepayPlanItem> repayPlanItems) {
         //等待实现
     }
-    
+
     public BigDecimal getTotalUnpayedPrice(){
         //等待实现
     }
-    
+
     public BigDecimal getTotalUnpayedRate(){
         //等待实现
     }
- 
+
     public BigDecimal getTotalUnpayedFee(){
         //等待实现
     }
