@@ -240,5 +240,11 @@ public class Me extends Man {
     }
 ```
 
+
+
+类图如下:
+
+![](/assets/AbstractGirlFriend.png)
+
 Tips: 还可以使用 Nullable 接口和是 Null 标记接口来提高代码的可读性, 在实现空对象模式的时候需要注意保持上层代码的行为要可控
 
