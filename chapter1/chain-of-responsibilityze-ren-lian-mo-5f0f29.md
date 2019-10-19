@@ -42,7 +42,8 @@ public class BigHeadSon {
 ```java
 public class DecideFather {
 
-    public static String findFatherName(BigHeadSon son) {
+    public static String findFatherName
+                        (BigHeadSon son) {
         if (son.isPointedNose()) {
             return "尖鼻子厨师";
         }
@@ -63,7 +64,8 @@ public class DecideFather {
 public class App {
 
     public static void main(String[] args) {
-        System.out.println(DecideFather.findFatherName(new BigHeadSon()));
+        System.out.println(DecideFather.
+                findFatherName(new BigHeadSon()));
     }
 }
 ```
@@ -77,9 +79,12 @@ public class App {
 先定义一套责任链的共有类:
 
 ```java
-public interface ChainNode<T extends AbstractChainNodeResponse> {
+public interface ChainNode
+    <T extends AbstractChainNodeResponse> {
 
-    <C extends AbstractChainNodeContext, R extends AbstractChainNodeRequest> ChainResult<T> execute(C context, R request);
+    <C extends AbstractChainNodeContext, 
+        R extends AbstractChainNodeRequest> 
+    ChainResult<T> execute(C context, R request);
 }
 ```
 
@@ -87,7 +92,8 @@ public interface ChainNode<T extends AbstractChainNodeResponse> {
 
 ```java
 @Data
-public class ChainResult<T extends AbstractChainNodeResponse> {
+public class ChainResult
+                <T extends AbstractChainNodeResponse> {
 
     private boolean processingCompleted;
 
@@ -102,9 +108,11 @@ public class ChainProcessor {
     public static <T extends AbstractChainNodeResponse>
         T handleChainNodes(List<ChainNode<T>> chainNodes,
                        AbstractChainNodeContext context,
-                       AbstractChainNodeRequest request, T defaultValue) {
+                       AbstractChainNodeRequest request, 
+                       T defaultValue) {
         for (ChainNode<T> chainNode : chainNodes) {
-            ChainResult<T> execute = chainNode.execute(context, request);
+            ChainResult<T> execute = 
+                    chainNode.execute(context, request);
             if (execute.isProcessingCompleted()) {
                 return execute.getResponse();
             }
@@ -122,7 +130,8 @@ public class ChainProcessor {
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class FatherNameChainNodeResponse extends AbstractChainNodeResponse {
+public class FatherNameChainNodeResponse 
+        extends AbstractChainNodeResponse {
 
     //父亲姓名
     private String fatherName;
@@ -134,7 +143,8 @@ public class FatherNameChainNodeResponse extends AbstractChainNodeResponse {
 
 ```java
 @Getter
-public class BigHeadSon extends AbstractChainNodeRequest {
+public class BigHeadSon 
+                extends AbstractChainNodeRequest {
 
     //是否尖鼻子
     private final boolean pointedNose = false;
@@ -150,10 +160,13 @@ public class BigHeadSon extends AbstractChainNodeRequest {
 实现一个抽象的找爸爸类:
 
 ```java
-public abstract class CheckFatherChainNode implements ChainNode<FatherNameChainNodeResponse> {
+public abstract class CheckFatherChainNode 
+    implements ChainNode<FatherNameChainNodeResponse> {
 
     @Override
-    public ChainResult<FatherNameChainNodeResponse> execute(AbstractChainNodeContext context, AbstractChainNodeRequest request) {
+    public ChainResult<FatherNameChainNodeResponse> 
+        execute(AbstractChainNodeContext context, 
+                AbstractChainNodeRequest request) {
         return null;
     }
 }
@@ -162,14 +175,19 @@ public abstract class CheckFatherChainNode implements ChainNode<FatherNameChainN
 尖鼻子检查:
 
 ```java
-public class NoseCheckFatherChainNode extends CheckFatherChainNode {
+public class NoseCheckFatherChainNode 
+                extends CheckFatherChainNode {
     @Override
-    public ChainResult<FatherNameChainNodeResponse> execute(AbstractChainNodeContext context, AbstractChainNodeRequest request) {
+    public ChainResult<FatherNameChainNodeResponse> 
+    execute(AbstractChainNodeContext context, 
+            AbstractChainNodeRequest request) {
         BigHeadSon bigHeadSon = (BigHeadSon) request;
-        ChainResult<FatherNameChainNodeResponse> chainResult = new ChainResult<>();
+        ChainResult<FatherNameChainNodeResponse> 
+                    chainResult = new ChainResult<>();
         if (bigHeadSon.isPointedNose()) {
             chainResult.setProcessingCompleted(true);
-            chainResult.setResponse(new FatherNameChainNodeResponse("尖鼻子厨师"));
+            chainResult.setResponse(
+            new FatherNameChainNodeResponse("尖鼻子厨师"));
         }
         return chainResult;
     }
@@ -179,14 +197,19 @@ public class NoseCheckFatherChainNode extends CheckFatherChainNode {
 粗眉毛检查:
 
 ```java
-public class EyeBrowCheckFatherChainNode extends CheckFatherChainNode {
+public class EyeBrowCheckFatherChainNode 
+    extends CheckFatherChainNode {
     @Override
-    public ChainResult<FatherNameChainNodeResponse> execute(AbstractChainNodeContext context, AbstractChainNodeRequest request) {
+    public ChainResult<FatherNameChainNodeResponse> 
+        execute(AbstractChainNodeContext context, 
+                AbstractChainNodeRequest request) {
         BigHeadSon bigHeadSon = (BigHeadSon) request;
-        ChainResult<FatherNameChainNodeResponse> chainResult = new ChainResult<>();
+        ChainResult<FatherNameChainNodeResponse> chainResult 
+                                        = new ChainResult<>();
         if (bigHeadSon.isCoarseEyebrows()) {
             chainResult.setProcessingCompleted(true);
-            chainResult.setResponse(new FatherNameChainNodeResponse("粗眉毛保安"));
+            chainResult.setResponse(
+            new FatherNameChainNodeResponse("粗眉毛保安"));
         }
         return chainResult;
     }
@@ -196,14 +219,19 @@ public class EyeBrowCheckFatherChainNode extends CheckFatherChainNode {
 大头检查:
 
 ```java
-public class HeadCheckFatherChainNode extends CheckFatherChainNode {
+public class HeadCheckFatherChainNode 
+            extends CheckFatherChainNode {
     @Override
-    public ChainResult<FatherNameChainNodeResponse> execute(AbstractChainNodeContext context, AbstractChainNodeRequest request) {
+    public ChainResult<FatherNameChainNodeResponse> 
+        execute(AbstractChainNodeContext context, 
+                AbstractChainNodeRequest request) {
         BigHeadSon bigHeadSon = (BigHeadSon) request;
-        ChainResult<FatherNameChainNodeResponse> chainResult = new ChainResult<>();
+        ChainResult<FatherNameChainNodeResponse> chainResult 
+                                        = new ChainResult<>();
         if (bigHeadSon.isBigHead()) {
             chainResult.setProcessingCompleted(true);
-            chainResult.setResponse(new FatherNameChainNodeResponse("隔壁老王"));
+            chainResult.setResponse(
+            new FatherNameChainNodeResponse("隔壁老王"));
         }
         return chainResult;
     }
@@ -215,9 +243,10 @@ public class HeadCheckFatherChainNode extends CheckFatherChainNode {
 ```java
 public class App {
     public static void main(String[] args) {
-        System.out.println(ChainProcessor.handleChainNodes(Arrays.asList(new NoseCheckFatherChainNode(),
-                new EyeBrowCheckFatherChainNode(), new HeadCheckFatherChainNode()),
-                null, new BigHeadSon(), new FatherNameChainNodeResponse("小头爸爸")));
+        System.out.println(ChainProcessor
+        .handleChainNodes(Arrays.asList(new NoseCheckFatherChainNode(),
+        new EyeBrowCheckFatherChainNode(), new HeadCheckFatherChainNode()),
+        null, new BigHeadSon(), new FatherNameChainNodeResponse("小头爸爸")));
     }
 }
 ```
