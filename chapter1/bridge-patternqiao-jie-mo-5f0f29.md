@@ -171,5 +171,11 @@ public class NiuLangBody implements Body {
 }
 ```
 
+使用:
 
+```java
+System.out.println(new NiuLangBody().visitGirl(new ZhiNvGirl()));
+```
+
+我们成功把 m \* n 个类 变成了 m + n 个类
 
