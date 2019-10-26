@@ -177,5 +177,5 @@ public class NiuLangBody implements Body {
 System.out.println(new NiuLangBody().visitGirl(new ZhiNvGirl()));
 ```
 
-我们成功把 m \* n 个类 变成了 m + n 个类
+我们成功把 m \* n 个类 变成了 m + n 个类, 并且代码的可复用性提高了很多
 
