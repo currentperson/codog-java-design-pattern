@@ -162,5 +162,7 @@ for (Student student : new StudentLineUp(students)) {
 }
 ```
 
+类图:
 
+![](/assets/2019110101.png)
 
