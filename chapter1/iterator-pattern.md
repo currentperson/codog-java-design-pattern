@@ -39,7 +39,7 @@ public static final void printAllName(
 我们试验一下:
 
 ```java
-List<List<Student>> students = new ArrayList<>(15);
+List<List<Student>> students = new ArrayList<>(16);
 for (int i = 0; i < 10; i++) {
     students.add(Arrays.asList(
             new Student("朱坚强" + i, true),
@@ -111,10 +111,43 @@ public class LineUpIterator
                 .get(currentRow).get(currentCol++);
     }
 }
-
 ```
 
 实际使用:
+
+```java
+List<List<Student>> students = new ArrayList<>(16);
+for (int i = 0; i < 10; i++) {
+    students.add(Arrays.asList(
+            new Student("朱坚强" + i, true),
+            new Student("兰兰" + i, false),
+            new Student("codog编程狗" + i, true)));
+}
+LineUpIterator lineUpIterator = 
+new LineUpIterator(new StudentLineUp(students));
+while (lineUpIterator.hasNext()) {
+    System.out.println(lineUpIterator.next().getName());
+}
+```
+
+## 更近一步
+
+如果我们变化的维度减少一个, 比如说是这个遍历方式基本不变, 但是内部存储方式可能会变, 那我们可以对数据结构采用 Iterable 方式:
+
+```java
+@Data
+@AllArgsConstructor
+public class StudentLineUp implements Iterable<Student> {
+    private List<List<Student>> students;
+
+    @Override
+    public Iterator<Student> iterator() {
+        return new LineUpIterator(this);
+    }
+}
+```
+
+使用方式:
 
 ```java
 List<List<Student>> students = new ArrayList<>(15);
@@ -124,19 +157,10 @@ for (int i = 0; i < 10; i++) {
             new Student("兰兰" + i, false),
             new Student("codog编程狗" + i, true)));
 }
-LineUpIterator lineUpIterator = new LineUpIterator(new StudentLineUp(students));
-while (lineUpIterator.hasNext()) {
-    System.out.println(lineUpIterator.next().getName());
+for (Student student : new StudentLineUp(students)) {
+    System.out.println(student.getName());
 }
 ```
-
-## 更近一步
-
-
-
-
-
-
 
 
 
