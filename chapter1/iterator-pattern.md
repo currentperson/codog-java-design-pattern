@@ -130,7 +130,7 @@ while (lineUpIterator.hasNext()) {
 }
 ```
 
-## 更近一步
+## 更进一步
 
 如果我们变化的维度减少一个, 比如说是这个遍历方式基本不变, 但是内部存储方式可能会变, 那我们可以对数据结构采用 Iterable 方式:
 
@@ -161,26 +161,6 @@ for (Student student : new StudentLineUp(students)) {
     System.out.println(student.getName());
 }
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
