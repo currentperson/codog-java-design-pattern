@@ -68,7 +68,7 @@ public static Integer queryEmployeeAvgAge
 
 我们先来定义二个变量, 实际应用中可能存储在数据库, 文件或者缓存中:
 
-```
+```java
 public class Constant {
     public static Boolean 
         IS_EMPLOYEE_CHANGED = false;
