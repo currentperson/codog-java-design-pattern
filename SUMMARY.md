@@ -11,6 +11,7 @@
   * [Chain of Responsibility\(责任链模式\)](chapter1/chain-of-responsibilityze-ren-lian-mo-5f0f29.md)
   * [Iterator Pattern\(迭代器模式\)](chapter1/iterator-pattern.md)
   * [Dirty Flag\(脏标记模式\)](chapter1/dirty-flag.md)
+  * [Partial Response Pattern\(部分响应模式\)](chapter1/partial-response-patternbu-fen-xiang-ying-mo-5f0f29.md)
 * [IDEA 安装插件的方法](idea-an-zhuang-cha-jian-de-fang-fa.md)
 * [homework/chuang-jian-zhe-ke-hou-zuo-ye.md](homework/chuang-jian-zhe-ke-hou-zuo-ye.md)
 * [homework/ce-lue-ke-hou-zuo-ye](homeworkce-lue-ke-hou-xi-ti.md)
