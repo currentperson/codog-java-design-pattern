@@ -193,3 +193,9 @@ public class UserInfo {
 
 ![](/assets/2019111604.png)
 
+
+
+## 后言
+
+参考: [https://java-design-patterns.com/patterns/partial-response/](https://java-design-patterns.com/patterns/partial-response/)
+
