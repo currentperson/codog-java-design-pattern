@@ -164,20 +164,22 @@ public static String queryMyBoyInfoByFields(String[] fields)
 ```java
 @Data
 public class UserInfo {
-    
+
     private String name;
-    
+
     private Integer level;
-    
+
     private LocalDateTime registerDate;
-    
+
     private String email;
-    
+
     private String phone;
 }
 ```
 
-       现在要求对外开一个包含姓名, 用户等级的接口
+```
+   现在要求对外开一个包含姓名, 用户等级的接口
+```
 
 
 
