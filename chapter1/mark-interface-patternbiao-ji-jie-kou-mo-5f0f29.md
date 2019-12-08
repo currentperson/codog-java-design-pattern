@@ -8,8 +8,6 @@
 
 ![](/assets/2019120801.png)                                        ![](/assets/2019120802.png)
 
-
-
 标记接口区分于其他的接口, 这种接口没有需要覆写的方法, 也没提供基础的通用能力.
 
 我们定义一个 Girl 类:
@@ -79,6 +77,10 @@ public class App {
 }
 ```
 
+类图如下:
+
+![](/assets/2019120803.png)
+
 ## 生产例子
 
 ```java
@@ -101,10 +103,10 @@ public class Employee {
     private Money bonus;
 
     private Money wages;
-} 
+}
 ```
 
-   2. 使用 Annotation 替换文中的例子, 并说明 Annotation 的优点
+1. 使用 Annotation 替换文中的例子, 并说明 Annotation 的优点
 
 
 
