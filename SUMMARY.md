@@ -14,6 +14,7 @@
   * [Partial Response Pattern\(部分响应模式\)](chapter1/partial-response-patternbu-fen-xiang-ying-mo-5f0f29.md)
   * [Value Object Pattern\(值对象模式\)](chapter1/value-object-pattern.md)
   * [Sample Factory Pattern\(简单工厂模式\)](chapter1/sample-factory-patternjian-dan-gong-chang-mo-5f0f29.md)
+  * [Mark Interface Pattern\(标记接口模式\)](chapter1/mark-interface-patternbiao-ji-jie-kou-mo-5f0f29.md)
 * [IDEA 安装插件的方法](idea-an-zhuang-cha-jian-de-fang-fa.md)
 * [homework/chuang-jian-zhe-ke-hou-zuo-ye.md](homework/chuang-jian-zhe-ke-hou-zuo-ye.md)
 * [homework/ce-lue-ke-hou-zuo-ye](homeworkce-lue-ke-hou-xi-ti.md)
