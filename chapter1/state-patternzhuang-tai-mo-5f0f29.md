@@ -350,5 +350,5 @@ public class FeelSorryState extends AbstractPUAGirlState {
 
 三 请把文中的例子用数据存储状态
 
-四 银行的账户有不同的状态, 账户操作分为村
+四 银行的账户有不同的状态, 账户操作分为存款, 取款, 注销等操作, 根据账号中的余额不同进行不行操作的反应
 
