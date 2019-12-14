@@ -344,9 +344,9 @@ public class FeelSorryState extends AbstractPUAGirlState {
 
 ## 课后作业
 
-一 
+一 如果每个状态都有百分之五十的状态是原来的状态_, _百分之五十的状态是 NOTHAPPY, 在  NOT\_HAPPY 这中状态下, 搭讪的行为是扇巴掌, 加微信的行为是打 110, 约会的行为是放鸽子, 学英语的行为是...., 请分别使用非状态模式和状态模式实现
 
-
+二 
 
 
 
