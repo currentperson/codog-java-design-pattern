@@ -165,6 +165,8 @@ public class GsonUtil {
 }
 ```
 
+## ![](/assets/2019122102.png)
+
 ## 课后作业
 
 1. 使用深度复制完成 Paper 对象的复制
@@ -241,24 +243,6 @@ public class MCExpenseReportEntry implements Serializable {
     private LocalDateTime financialApprovalDate;
 }
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
