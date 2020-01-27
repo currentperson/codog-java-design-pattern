@@ -18,6 +18,8 @@
   * [State Pattern\(状态模式\)](chapter1/state-patternzhuang-tai-mo-5f0f29.md)
   * [Prototype Pattern\(原型模式\)](chapter1/prototype-patternyuan-xing-mo-5f0f29.md)
   * [Object Pool Pattern\(对象池模式\)](chapter1/object-pool-patterndui-xiang-chi-mo-5f0f29.md)
+  * [Adapter Pattern\(适配器模式\)](chapter1/adapter-patternshi-pei-qi-mo-5f0f29.md)
+  * [Composite Pattern\(组合模式\)](chapter1/composite-patternzu-he-mo-5f0f29.md)
 * [IDEA 安装插件的方法](idea-an-zhuang-cha-jian-de-fang-fa.md)
 * [homework/chuang-jian-zhe-ke-hou-zuo-ye.md](homework/chuang-jian-zhe-ke-hou-zuo-ye.md)
 * [homework/ce-lue-ke-hou-zuo-ye](homeworkce-lue-ke-hou-xi-ti.md)
