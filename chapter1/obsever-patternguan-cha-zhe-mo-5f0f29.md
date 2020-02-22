@@ -80,6 +80,10 @@ newHotWorld.notifyObservers("清瘟胶囊");
 newHotWorld.notifyObservers("双黄连口服液");
 ```
 
+类图:
+
+![](/assets/2020022201.png)
+
 ## 课后作业
 
 1. 使用 java 自带了 Observable 和 Observer 重写文中的例子
