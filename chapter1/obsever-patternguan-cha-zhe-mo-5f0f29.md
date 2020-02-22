@@ -88,5 +88,3 @@ newHotWorld.notifyObservers("双黄连口服液");
 
 
 
-
-
