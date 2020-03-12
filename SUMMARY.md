@@ -31,4 +31,5 @@
 * [homework/ze-ren-lian-ke-hou-zuo-ye](homeworkze-ren-lian-ke-hou-zuo-ye.md)
 * [homework/qiao-jie-ke-hou-zuo-ye](homeworkqiao-jie-ke-hou-zuo-ye.md)
 * [homework/die-dai-qi-ke-hou-zuo-ye](homeworkdie-dai-qi-ke-hou-zuo-ye.md)
+* [重构读书笔记](zhong-gou-du-shu-bi-ji.md)
 
