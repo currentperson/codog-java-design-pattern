@@ -1,7 +1,7 @@
 # Summary
 
 * [Introduction](README.md)
-* [First Chapter](chapter1.md)
+* [DesignPattern](chapter1.md)
   * [Builder Pattern \(建造者模式\)](chapter1/builder-pattern-jian-zao-zhe-mo-5f0f29.md)
   * [Bridge Pattern\(桥接模式\)](chapter1/bridge-patternqiao-jie-mo-5f0f29.md)
   * [Template Method Pattern\(模板方法模式\)](chapter1/template-function-patternmo-ban-fang-fa-mo-5f0f29.md)
