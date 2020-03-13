@@ -22,6 +22,7 @@
   * [Composite Pattern\(组合模式\)](chapter1/composite-patternzu-he-mo-5f0f29.md)
   * [Obsever Pattern\(观察者模式\)](chapter1/obsever-patternguan-cha-zhe-mo-5f0f29.md)
   * [Tolerant Reader Pattern\(宽容读者模式\)](chapter1/tolerant-reader-patternkuan-rong-du-zhe-mo-5f0f29.md)
+  * [Decorator Pattern\(装饰器模式\)](chapter1/decorator-patternzhuang-shi-qi-mo-5f0f29.md)
 * [IDEA 安装插件的方法](idea-an-zhuang-cha-jian-de-fang-fa.md)
 * [homework/chuang-jian-zhe-ke-hou-zuo-ye.md](homework/chuang-jian-zhe-ke-hou-zuo-ye.md)
 * [homework/ce-lue-ke-hou-zuo-ye](homeworkce-lue-ke-hou-xi-ti.md)
