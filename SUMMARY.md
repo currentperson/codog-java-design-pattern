@@ -24,6 +24,7 @@
   * [Tolerant Reader Pattern\(宽容读者模式\)](chapter1/tolerant-reader-patternkuan-rong-du-zhe-mo-5f0f29.md)
   * [Decorator Pattern\(装饰器模式\)](chapter1/decorator-patternzhuang-shi-qi-mo-5f0f29.md)
   * [Dependency Injection Pattern\(依赖注入模式\)](chapter1/dependency-injection-patternyi-lai-zhu-ru-mo-5f0f29.md)
+  * [Execute Around Pattern\(环绕执行模式\)](chapter1/execute-around-patternhuan-rao-zhi-xing-mo-5f0f29.md)
 * [IDEA 安装插件的方法](idea-an-zhuang-cha-jian-de-fang-fa.md)
 * [homework/chuang-jian-zhe-ke-hou-zuo-ye.md](homework/chuang-jian-zhe-ke-hou-zuo-ye.md)
 * [homework/ce-lue-ke-hou-zuo-ye](homeworkce-lue-ke-hou-xi-ti.md)
