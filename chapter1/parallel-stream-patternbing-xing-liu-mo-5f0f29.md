@@ -175,5 +175,10 @@ public class ParallelBadBoy {
 }
 ```
 
+## 课后作业
+
+1. 把 BadBoy 和 ParallelBadBody 抽象成一个类
+2. 思考并行流一定可以加快速度么
+
 
 
