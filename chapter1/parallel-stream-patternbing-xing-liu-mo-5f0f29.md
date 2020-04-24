@@ -179,6 +179,7 @@ public class ParallelBadBoy {
 
 1. 把 BadBoy 和 ParallelBadBody 抽象成一个类
 2. 思考并行流一定可以加快速度么
+3. 我们有这么一个贷款产品需要展示给用户, 如果
 
 
 
