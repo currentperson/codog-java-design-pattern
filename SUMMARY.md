@@ -27,6 +27,7 @@
   * [Execute Around Pattern\(环绕执行模式\)](chapter1/execute-around-patternhuan-rao-zhi-xing-mo-5f0f29.md)
   * [Visitor Pattern\(参观者模式\)](chapter1/visitor-patterncan-guan-zhe-mo-5f0f29.md)
   * [Parallel Stream Pattern\(并行流模式\)](chapter1/parallel-stream-patternbing-xing-liu-mo-5f0f29.md)
+  * [Throttling Pattern\(节流模式\)](chapter1/throttling-patternjie-liu-mo-5f0f29.md)
 * [IDEA 安装插件的方法](idea-an-zhuang-cha-jian-de-fang-fa.md)
 * [homework/chuang-jian-zhe-ke-hou-zuo-ye.md](homework/chuang-jian-zhe-ke-hou-zuo-ye.md)
 * [homework/ce-lue-ke-hou-zuo-ye](homeworkce-lue-ke-hou-xi-ti.md)
