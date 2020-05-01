@@ -222,6 +222,8 @@ public class WuyiRemoteService implements RemoteService {
 }
 ```
 
+## ![](/assets/2020050100.png)
+
 ## 课后作业
 
 1. 定义一个新的节流类, 支持 改为 GUOQING 每次都是 0, 其他人在周六日是 0, 其他时期是 2
