@@ -145,5 +145,86 @@ OTHERS进入大门
 
 ## 节流模式
 
+定义一个节流类:
+
+```java
+public interface Throttler {
+
+    int getAllowedClientCount(String clientName);
+
+    int getActualClientCount(String clientName);
+
+    default boolean canAccessReource(String clientName) {
+        return getAllowedClientCount(clientName) >= getActualClientCount(clientName);
+    }
+}
+```
+
+实现:
+
+```java
+public class ThrottlerImpl implements Throttler {
+
+    public static final Map<String, AtomicInteger> ALLOW_CLIENT_COUNT_PER_SECOND = new ConcurrentHashMap<>();
+
+    static {
+        ALLOW_CLIENT_COUNT_PER_SECOND.put("GUOQING", new AtomicInteger(0));
+        ALLOW_CLIENT_COUNT_PER_SECOND.put("OTHERS", new AtomicInteger(2));
+    }
+
+    public static final Map<String, AtomicInteger> ACTUAL_CLIENT_COUNT_PER_SECOND = new ConcurrentHashMap<>();
+
+    static {
+        ACTUAL_CLIENT_COUNT_PER_SECOND.put("GUOQING", new AtomicInteger(0));
+        ACTUAL_CLIENT_COUNT_PER_SECOND.put("OTHERS", new AtomicInteger(0));
+    }
+
+    public ThrottlerImpl() {
+        new Timer(true).schedule(new TimerTask() {
+            @Override
+            public void run() {
+                ACTUAL_CLIENT_COUNT_PER_SECOND.put("GUOQING", new AtomicInteger(0));
+                ACTUAL_CLIENT_COUNT_PER_SECOND.put("OTHERS", new AtomicInteger(0));
+            }
+        }, 0, 1000);
+    }
+
+    @Override
+    public int getAllowedClientCount(String clientName) {
+        return ALLOW_CLIENT_COUNT_PER_SECOND.get(clientName).get();
+    }
+
+    @Override
+    public int getActualClientCount(String clientName) {
+        return ACTUAL_CLIENT_COUNT_PER_SECOND.get(clientName).getAndIncrement();
+    }
+}
+```
+
+定义一个五一服务:
+
+```java
+public class WuyiRemoteService implements RemoteService {
+
+    public static final Map<String, Throttler> CLIENT_THROTTLER_MAP = new ConcurrentHashMap<>();
+    static {
+        CLIENT_THROTTLER_MAP.put("GUOQING",new ThrottlerImpl());
+        CLIENT_THROTTLER_MAP.put("OTHERS",new ThrottlerImpl());
+    }
+
+    @Override
+    public void takeOfficialSeal(String clientName) {
+        if (!CLIENT_THROTTLER_MAP.get(clientName).canAccessReource(clientName)) {
+            return;
+        }
+        System.out.println(clientName + "成功抢夺一枚公章" + new Random().nextInt());
+    }
+}
+```
+
+## 课后作业
+
+1. 定义一个新的节流类, 支持 改为 GUOQING 每次都是 0, 其他人在周六日是 0, 其他时期是 2
+
 
 
