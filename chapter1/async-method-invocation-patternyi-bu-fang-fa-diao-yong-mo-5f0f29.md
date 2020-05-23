@@ -104,7 +104,7 @@ total time: 2
 
 为了答谢大家的赞赏, 先给个赞赏同学打个广告:
 
+![](/assets/2020052303.png)    ![](/assets/2020052304.png)
 
-
-yaxin.yyx@mybank.cn
+蚂蚁金服网商银行招聘, java 开发, 工作地点杭州和北京, 有意向的可以发送简历到 **yaxin.yyx@mybank.cn**
 
