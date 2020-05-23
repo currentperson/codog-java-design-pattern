@@ -4,7 +4,7 @@
 
 ## 例子代码
 
-最近 70 后绿地高管抢了 80 后男人的 90 后老婆的事情也闹得沸沸洋洋,  70 后谎称自己不孕不育然后没有采取安全措施导致这个 90 后怀孕了, 还要给 80 后老公一笔钱, 孩子归 80 后老公管, 
+最近 70 后绿地高管抢了 80 后男人的 90 后老婆的事情也闹得沸沸洋洋,  70 后谎称自己不孕不育然后没有采取安全措施导致这个 90 后怀孕了, 还要给 80 后老公一笔钱, 孩子归 80 后老公管,
 
 ![](/assets/2020052300.png)![](/assets/2020052301.png)![](/assets/2020052302.png)
 
@@ -64,6 +64,51 @@ private static void playSequence(Man manAfter80, Man manAfter70, Woman woman) {
     System.out.println("manAfter80: " + manAfter80);
 }
 ```
+
+输出如下:
+
+```java
+manAfter80: Man(name=史睿生, birthday=1980-01-01, childName=陈军的孩子)
+total time: 4
+```
+
+## 问题分析
+
+这个代码没啥问题, 绿帽扣得死死的, 主要是女主这么高明的人怎么能串行 play 呢, 并行不可少
+
+## 异步方法调用模式
+
+```java
+@SneakyThrows
+private static void playParallel(Man manAfter80, Man manAfter70, Woman woman) {
+    CompletableFuture<String> future = CompletableFuture.supplyAsync(() -> manAfter70.playWithWoman(woman));
+    manAfter80.playWithWoman(woman);
+    manAfter80.setChildName(future.get());
+    System.out.println("manAfter80: " + manAfter80);
+}
+```
+
+输出如下:
+
+```java
+manAfter80: Man(name=史睿生, birthday=1980-01-01, childName=陈军的孩子)
+total time: 2
+```
+
+## 课后作业
+
+1. CompletableFuture.supplyAsync 第二个入参使用一下, 使用自定义的线程池
+2. 再定义多个 man, 进行多人运动
+
+## 广告时间
+
+为了答谢大家的赞赏, 先给个赞赏同学大哥广告:
+
+
+
+
+
+
 
 
 
