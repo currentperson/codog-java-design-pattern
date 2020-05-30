@@ -108,7 +108,7 @@ public synchronized void takeGoodsFromAirDrop(Player player, AirdropBox airdropB
 
 上面虽然是能够解决多线程情况下一个资源的占用处理, 但是如果是分布式情况下, 一套代码部署到多个服务器, 这个 JVM 层级的锁就不行了, 所以可以使用分布式锁
 
-我们使用模板方法模式和 Callback 模式结合:
+我们使用模板方法模式\([https://mp.weixin.qq.com/s?\_\_biz=MzUzOTQ2MjgwNA==&mid=2247483724&idx=1&sn=eb3b705c449f7b2c6fca7e6417e55918&chksm=fac95cb7cdbed5a1256cf1ccf173609320a637e58658e7fdadba94ada9d4bec806ca53ff0ccf&token=1268878968&lang=zh\_CN\#rd](https://mp.weixin.qq.com/s?__biz=MzUzOTQ2MjgwNA==&mid=2247483724&idx=1&sn=eb3b705c449f7b2c6fca7e6417e55918&chksm=fac95cb7cdbed5a1256cf1ccf173609320a637e58658e7fdadba94ada9d4bec806ca53ff0ccf&token=1268878968&lang=zh_CN#rd)\)和 Callback 模式\([https://mp.weixin.qq.com/s?\_\_biz=MzUzOTQ2MjgwNA==&mid=2247483909&idx=1&sn=3ba745565ecd2fd56d66adc7f1ffe2cc&chksm=fac95ffecdbed6e8a05241bc530a92d5c7853f79cf73a5e9a58b5b991e67264cec5117327bd9&token=1268878968&lang=zh\_CN\#rd](https://mp.weixin.qq.com/s?__biz=MzUzOTQ2MjgwNA==&mid=2247483909&idx=1&sn=3ba745565ecd2fd56d66adc7f1ffe2cc&chksm=fac95ffecdbed6e8a05241bc530a92d5c7853f79cf73a5e9a58b5b991e67264cec5117327bd9&token=1268878968&lang=zh_CN#rd)\)结合:
 
 ```java
 public interface LockCallback {
