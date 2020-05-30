@@ -112,9 +112,10 @@ public synchronized void takeGoodsFromAirDrop(Player player, AirdropBox airdropB
 
 ```java
 public interface LockCallback {
-
+    //判断业务是否是正确的状态, 防重等
     boolean checkStatus(String uuid);
 
+    //执行业务方法
     void execute();
 }
 ```
@@ -157,4 +158,8 @@ public class LockExecuteTemplate {
 ```
 
 lockClient 是使用 zookeeper 实现的分布式锁, lockCallback 是定义的接口, 用户可以传入不同的实现, 业务类型和 uuid 就是唯一确定一个资源
+
+
+
+
 
