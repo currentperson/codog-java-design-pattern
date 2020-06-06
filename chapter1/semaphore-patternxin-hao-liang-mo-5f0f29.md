@@ -85,5 +85,47 @@ System.out.println(stallList.toString());
 
 ## 问题分析
 
-这个和互斥模式是一样的, 主要是
+这个和互斥模式是一样的, 主要是状态的不一致, 小王卖了小张的货, 如果用互斥模式来解决也没什么问题, 就是如果对stallList 加锁粒度太大, 并发不高, 如果是对单个摊位加锁, 要注意加锁顺序, 代码也会复杂一些.
+
+## 信号量模式
+
+```java
+List<People> peopleList = new ArrayList<>();
+peopleList.add(new People("小李", Arrays.asList(new Goods("小李皮鞋"), new Goods("小李运动鞋"))));
+peopleList.add(new People("小王", Arrays.asList(new Goods("小王西瓜"), new Goods("小王椰子"))));
+peopleList.add(new People("小张", Arrays.asList(new Goods("小张肥皂"), new Goods("小张洗衣液"))));
+
+Semaphore semaphore = new Semaphore(2);
+
+peopleList.parallelStream().forEach(
+        (people) -> {
+            try {
+                semaphore.acquire();
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+            System.out.println(people.getName() + "开始摆摊");
+            Stall stall = new Stall();
+            stall.setName(people.getName() + "的摊位");
+            //摆放货物中
+            putGoods2Stall();
+            stall.setSaleGoods(people.getSaleGoods());
+            System.out.println(LocalDateTime.now() + "" + stall.toString());
+            semaphore.release();
+        }
+);
+```
+
+输出:
+
+```
+小王开始摆摊
+小李开始摆摊
+2020-06-06T13:04:03.710Stall(number=null, name=小王的摊位, saleGoods=[Goods(name=小王西瓜), Goods(name=小王椰子)])
+2020-06-06T13:04:03.710Stall(number=null, name=小李的摊位, saleGoods=[Goods(name=小李皮鞋), Goods(name=小李运动鞋)])
+小张开始摆摊
+2020-06-06T13:04:05.713Stall(number=null, name=小张的摊位, saleGoods=[Goods(name=小张肥皂), Goods(name=小张洗衣液)])
+```
+
+
 
