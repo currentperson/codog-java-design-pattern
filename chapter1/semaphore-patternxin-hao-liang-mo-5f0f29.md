@@ -118,7 +118,7 @@ peopleList.parallelStream().forEach(
 
 输出:
 
-```
+```java
 小王开始摆摊
 小李开始摆摊
 2020-06-06T13:04:03.710Stall(number=null, name=小王的摊位, saleGoods=[Goods(name=小王西瓜), Goods(name=小王椰子)])
