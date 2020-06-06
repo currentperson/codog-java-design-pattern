@@ -31,6 +31,7 @@
   * [Producer Consumer Pattern\(生产者消费者模式\)](chapter1/producer-consumer-patternsheng-chan-zhe-xiao-fei-zhe-mo-5f0f29.md)
   * [Async Method Invocation Pattern\(异步方法调用模式\)](chapter1/async-method-invocation-patternyi-bu-fang-fa-diao-yong-mo-5f0f29.md)
   * [Mutex Pattern\(互斥模式\)](chapter1/mutex-patternhu-chi-mo-5f0f29.md)
+  * [Semaphore Pattern\(信号量模式\)](chapter1/semaphore-patternxin-hao-liang-mo-5f0f29.md)
 * [IDEA 安装插件的方法](idea-an-zhuang-cha-jian-de-fang-fa.md)
 * [homework/chuang-jian-zhe-ke-hou-zuo-ye.md](homework/chuang-jian-zhe-ke-hou-zuo-ye.md)
 * [homework/ce-lue-ke-hou-zuo-ye](homeworkce-lue-ke-hou-xi-ti.md)
