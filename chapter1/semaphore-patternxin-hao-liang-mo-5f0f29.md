@@ -14,5 +14,76 @@
 
 ![](/assets/2020060605.png) ![](/assets/2020060603.png) ![](/assets/2020060604.png)
 
+可是摊位有限, 不能随便摆哦, 我们来讲讲这里面的故事:
 
+我们定义一下货物类:
+
+```java
+//商品
+@Data
+@AllArgsConstructor
+public class Goods {
+    private String name;
+}
+```
+
+定义一个摊位类:
+
+```java
+//摊位
+@Data
+@AllArgsConstructor
+public class Stall {
+    private Integer number;
+    private String name;
+    private List<Goods> saleGoods;
+}
+```
+
+定义一个摆摊的人:
+
+```java
+//摆摊人
+@Data
+@AllArgsConstructor
+public class People {
+    private String name;
+    private List<Goods> saleGoods;
+}
+```
+
+我们三个人同时去摆摊:
+
+```java
+List<People> peopleList = new ArrayList<>();
+peopleList.add(new People("小李", Arrays.asList(new Goods("小李皮鞋"), new Goods("小李运动鞋"))));
+peopleList.add(new People("小王", Arrays.asList(new Goods("小王西瓜"), new Goods("小王椰子"))));
+peopleList.add(new People("小张", Arrays.asList(new Goods("小张肥皂"), new Goods("小张洗衣液"))));
+List<Stall> stallList = new ArrayList<>();
+stallList.add(new Stall(1,"摊位一",new ArrayList<>()));
+stallList.add(new Stall(2,"摊位二",new ArrayList<>()));
+peopleList.parallelStream().forEach(
+        (people) -> {
+            for (Stall stall : stallList) {
+                if(stall.getSaleGoods().isEmpty()) {
+                    stall.setName(people.getName() + "的摊位");
+                    //拜访货物中
+                    putGoods2Stall();
+                    stall.setSaleGoods(people.getSaleGoods());
+                }
+            }
+        }
+);
+System.out.println(stallList.toString());
+```
+
+输出:
+
+```java
+[Stall(number=1, name=小李的摊位, saleGoods=[Goods(name=小李皮鞋), Goods(name=小李运动鞋)]), Stall(number=2, name=小王的摊位, saleGoods=[Goods(name=小张肥皂), Goods(name=小张洗衣液)])]
+```
+
+## 问题分析
+
+这个和互斥模式是一样的, 主要是
 
