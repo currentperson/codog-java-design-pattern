@@ -37,6 +37,7 @@
   * [Singleton Pattern\(单例模式\)](chapter1/singleton-patterndan-li-mo-5f0f29.md)
   * [Proxy Pattern\(代理模式\)](chapter1/proxy-patterndai-li-mo-5f0f29.md)
   * [Strangler Pattern\(绞杀者模式\)](chapter1/strangler-patternjiao-sha-zhe-mo-5f0f29.md)
+  * [Attribute Annotation Pattern\(属性注解模式\)](chapter1/attribute-annotation-patternshu-xing-zhu-jie-mo-5f0f29.md)
 * [IDEA 安装插件的方法](idea-an-zhuang-cha-jian-de-fang-fa.md)
 * [homework/chuang-jian-zhe-ke-hou-zuo-ye.md](homework/chuang-jian-zhe-ke-hou-zuo-ye.md)
 * [homework/ce-lue-ke-hou-zuo-ye](homeworkce-lue-ke-hou-xi-ti.md)
