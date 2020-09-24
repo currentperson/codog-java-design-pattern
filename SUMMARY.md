@@ -40,6 +40,7 @@
   * [Attribute Annotation Pattern\(属性注解模式\)](chapter1/attribute-annotation-patternshu-xing-zhu-jie-mo-5f0f29.md)
   * [Abstract Factory Pattern\(抽象工厂模式\)](chapter1/abstract-factory-patternchou-xiang-gong-chang-mo-5f0f29.md)
   * [Thread Local Pattern\(线程变量模式\)](chapter1/thread-local-patternxian-cheng-bian-liang-mo-5f0f29.md)
+  * [Time Window Pattern\(时间窗口模式\)](chapter1/time-window-patternshi-jian-chuang-kou-mo-5f0f29.md)
 * [IDEA 安装插件的方法](idea-an-zhuang-cha-jian-de-fang-fa.md)
 * [homework/chuang-jian-zhe-ke-hou-zuo-ye.md](homework/chuang-jian-zhe-ke-hou-zuo-ye.md)
 * [homework/ce-lue-ke-hou-zuo-ye](homeworkce-lue-ke-hou-xi-ti.md)
